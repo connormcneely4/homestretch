@@ -1,0 +1,132 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-white py-12 px-4 selection:bg-black selection:text-white">
+      {/* Centered Column */}
+      <div className="framed-column text-[12px] leading-normal space-y-8">
+        
+        {/* Header Frame */}
+        <header className="border-b border-black pb-4 text-center">
+          <div className="mb-6">
+            <img 
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
+              alt="Archival Commercial Buildings 1971"
+              className="w-full grayscale filter contrast-125 brightness-90"
+              referrerPolicy="no-referrer"
+            />
+            <div className="mt-2 text-[8px] italic opacity-70 leading-tight">
+              University Parkway, August 1971, Frank Jones, photographer,<br />
+              image courtesy of the Forsyth County Public Library Photograph Collection
+            </div>
+          </div>
+          <h1 className="font-bold uppercase tracking-tight text-lg">
+            Homestretch
+          </h1>
+        </header>
+
+        {/* Article Section */}
+        <section className="space-y-6 text-justify">
+          <p>
+            Along 25th Street, hundreds of women and men watched the empty road with babies in 
+            their arms and children by their side. Waitresses wiped their hands on their aprons and 
+            mechanics stood in their overalls. Rocking chairs leaned on the curbs and housewives 
+            left their houses to stand in tree-shaded front yards.
+          </p>
+
+          <p>
+            A little Black girl named Deborah stood with her mother, Rosie Ford, gazing out at the 
+            oncoming motorcade in the cold sun. Her father, Johney, wasn't there to see the city 
+            police and state highwaymen parade across 25th. Even though most of Winston-Salem 
+            had shut down, he was still working. Mr. Ford usually had one day off, and it had 
+            already passed.
+          </p>
+
+          <p>
+            Deborah looked out at the crowd. Cameras were snapping on either side of the road. 
+            Even a priest in his robes stood there, taking pictures. An entire kindergarten had 
+            assembled with a big sign and an American flag, the stars and stripes swaying in the 
+            wind. Dozens held Confederate flags; little white girls and some young men, who waved 
+            their flags to the news cameras passing them in cars.
+          </p>
+
+          <p>
+            "The President's coming," Rosie Ford told her daughter. Before he would clean his 
+            lunch plate at the Babcock mansion down Reynolda Road, President Harry Truman 
+            rode in the White House limousine across 25th. His procession of hundreds of police 
+            cars and motorcycles passed thousands of residents and visitors that lined his route 
+            from the Smith Reynolds airport.
+          </p>
+
+          <p>
+            "Wake Forest Day" had arrived, and its national and local newspaper heralds crammed 
+            themselves into buses, cabs and motor cars to stalk the presidential procession. People 
+            stood on the roofs of the exhibit buildings of the old Liberty Street fairgrounds to gaze 
+            down at the spectacle. 25th Street had never seen anything like it, the road least of all. 
+            It had been used to an easy kind of traffic: the slow tread of automobiles and feet.
+          </p>
+        </section>
+
+        <section className="space-y-6 text-justify">
+          <p>
+            Nearly a decade earlier, on the north side of Winston-Salem, Johney Ford was 
+            preparing to go to join the fight in World War II. When he left his family, the Reynolds 
+            skyscraper stood over the city; a beacon of an industry that had attracted thousands of 
+            African American sharecroppers and farm workers to work in its factories. When Ford 
+            returned, the building hadn't changed. It remained the unmistakable sign of an empire—
+            a business in firm control of a city where it paid more than a quarter of all property taxes.
+          </p>
+
+          <p>
+            The people of Winston-Salem had their saying: nothing could get done in the town 
+            unless it had been first approved on the 19th floor of the Reynolds building. They were 
+            right. It was the wealthy white executive of Reynolds, Charles B. Wade, that helped 
+            handpick poor Black neighborhoods to wipe off the map in the Winston-Salem 
+            Redevelopment Commission.
+          </p>
+
+          <p>
+            Far below that top floor, dozens of Black women worked in suffocating heat and dust, 
+            deep in the heart of Winston-Salem. Sacks of tobacco rode men's shoulders into the 
+            factory floor, where the women were waiting to roll them into cigarettes. There were no 
+            breaks. If they slowed down, they'd be shown the door.
+          </p>
+
+          <p>
+            The Fords were just one of the 4,000 families that the city had displaced from 1953 to 
+            1959. One morning, Deborah watched as her 
+            house was packed onto a truck bed and sent to a new property on Thurmond Street. 
+            Johney and Rosie didn't have a say in the matter. They moved to Thurmond Street. 
+            Johney continued to drive to East Winston, where his chain of businesses would be 
+            located for the rest of his life.
+          </p>
+
+          <p>
+            In 2017, a woman who lived on Rundell Street was 
+            killed in a hit-and-run crossing University Parkway to get to Bojangles, the closest and 
+            most affordable restaurant near where she lived. Over time, the expressway removed 
+            the local restaurants and corner stores with fresh food and produce. Now, corporate-owned 
+            chains and gas stations dominate the area and create food insecurity for 
+            residents who live near the highway.
+          </p>
+
+          <p>
+            Today, there is a community of visitors living on either side of the cars that rumble 
+            through their neighborhood. Behind the black fences and walls of trees, families raise 
+            their own and celebrate life. They mend the divide between the east and west, north 
+            and south, white and Black by making new communities, new history and a new legacy 
+            around the expressway. Even now, families in the Boston-Thurmond neighborhood wait, 
+            watching for the next move.
+          </p>
+        </section>
+
+        <footer className="border-t border-black pt-4 text-[10px] uppercase opacity-50">
+          © 2026 Homestretch Media
+        </footer>
+      </div>
+    </div>
+  );
+}
