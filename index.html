@@ -31,6 +31,89 @@
             }
         }
     </style>
+    <style>
+        .img-compare {
+            position: relative;
+            overflow: hidden;
+            cursor: col-resize;
+            user-select: none;
+            border: 1px solid #000;
+            line-height: 0;
+        }
+
+        .img-compare img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+        }
+
+        .img-compare__overlay {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            width: 50%;
+        }
+
+        .img-compare__overlay img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top left;
+        }
+
+        .img-compare__divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #000;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .img-compare__handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 36px;
+            height: 36px;
+            background: #000;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .img-compare__handle svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .img-compare__label {
+            position: absolute;
+            bottom: 8px;
+            font-size: 8px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(0,0,0,0.65);
+            color: #fff;
+            padding: 2px 6px;
+            line-height: 1.4;
+        }
+
+        .img-compare__label--left  { left: 8px; }
+        .img-compare__label--right { right: 8px; }
+    </style>
 </head>
 <body class="py-12 px-4 selection:bg-black selection:text-white">
 
@@ -54,6 +137,45 @@
                 Homestretch
             </h1>
         </header>
+
+        <!-- Before / After Image Comparison -->
+        <section>
+            <div
+                class="img-compare"
+                id="imgCompare"
+                aria-label="Before and after image comparison. Drag the slider to reveal each image."
+                role="img"
+            >
+                <!-- Background: "after" (present-day) -->
+                <img
+                    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=960"
+                    alt="Present-day view"
+                    draggable="false"
+                >
+                <!-- Foreground: "before" (historical) -->
+                <div class="img-compare__overlay" id="imgOverlay">
+                    <img
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=960"
+                        alt="Historical view"
+                        class="grayscale"
+                        draggable="false"
+                    >
+                    <span class="img-compare__label img-compare__label--left">Then</span>
+                </div>
+                <!-- Divider + handle -->
+                <div class="img-compare__divider" id="imgDivider">
+                    <div class="img-compare__handle">
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 4l-4 6 4 6V4zm6 0v12l4-6-4-6z"/>
+                        </svg>
+                    </div>
+                </div>
+                <span class="img-compare__label img-compare__label--right">Now</span>
+            </div>
+            <div class="mt-2 text-[8px] italic opacity-70 leading-tight">
+                Drag the slider to compare historical and present-day views along University Parkway.
+            </div>
+        </section>
 
         <!-- Article Section -->
         <section class="space-y-6 text-justify">
@@ -155,5 +277,49 @@
         </footer>
     </div>
 
+    <script>
+        (function () {
+            var container = document.getElementById('imgCompare');
+            var overlay   = document.getElementById('imgOverlay');
+            var divider   = document.getElementById('imgDivider');
+            var dragging  = false;
+
+            function setPosition(clientX) {
+                var rect = container.getBoundingClientRect();
+                var x    = Math.max(0, Math.min(clientX - rect.left, rect.width));
+                var pct  = (x / rect.width * 100).toFixed(2);
+                overlay.style.width     = pct + '%';
+                divider.style.left      = pct + '%';
+            }
+
+            container.addEventListener('mousedown', function (e) {
+                dragging = true;
+                setPosition(e.clientX);
+                e.preventDefault();
+            });
+
+            window.addEventListener('mousemove', function (e) {
+                if (dragging) setPosition(e.clientX);
+            });
+
+            window.addEventListener('mouseup', function () {
+                dragging = false;
+            });
+
+            container.addEventListener('touchstart', function (e) {
+                dragging = true;
+                setPosition(e.touches[0].clientX);
+                e.preventDefault();
+            }, { passive: false });
+
+            window.addEventListener('touchmove', function (e) {
+                if (dragging) setPosition(e.touches[0].clientX);
+            }, { passive: true });
+
+            window.addEventListener('touchend', function () {
+                dragging = false;
+            });
+        })();
+    </script>
 </body>
 </html>
